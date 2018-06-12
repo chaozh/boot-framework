@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>boot-generator</artifactId>
+    <packaging>jar</packaging>
+
+    <name>boot-generator</name>
+    <description>ORM code generator for framework</description>
+
+    <parent>
+        <groupId>com.chaozh</groupId>
+        <artifactId>boot-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../boot-parent/pom.xml</relativePath>
+    </parent>
+
+    <properties>
+        <!--  MyBatis Generator  -->
+        <mybatis.generator.version>1.3.2</mybatis.generator.version>
+        <!--  Java接口和实体类  -->
+        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
+        <targetMapperPackage>com.chaozh.mapper</targetMapperPackage>
+        <targetModelPackage>com.chaozh.model</targetModelPackage>
+        <!--  XML生成路径  -->
+        <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
+        <targetXMLPackage>mapper</targetXMLPackage>
+        <!--  依赖版本  -->
+        <mysql.version>5.1.29</mysql.version>
+        <jackson.version>2.8.5</jackson.version>
+        <servlet.version>3.0.1</servlet.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.chaozh</groupId>
+            <artifactId>boot-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ibeetl</groupId>
+            <artifactId>beetl</artifactId>
+        </dependency>
+
+        <!-- Mybatis Generator -->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>${mybatis.generator.version}</version>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+
+</project>

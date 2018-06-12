@@ -1,66 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>1.0.0</modelVersion>
     <groupId>com.chaozh</groupId>
-    <artifactId>demo</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <artifactId>boot-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
 
-    <name>springboot-starter</name>
-    <description>Demo project for Spring Boot</description>
+    <name>boot-parent</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>../boot-admin</module>
+        <module>../boot-core</module>
+        <module>../boot-rest</module>
+        <module>../boot-generator</module>
+    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.4.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>1.5.9.RELEASE</version>
     </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <!--  MyBatis依赖  -->
+         <!--  MyBatis依赖  -->
         <mybatis.version>3.3.1</mybatis.version>
         <mybatis.spring.version>1.2.4</mybatis.spring.version>
         <pagehelper.version>4.1.1</pagehelper.version>
-
         <mapper.version>3.3.9</mapper.version>
-        <!--  其他依赖  -->
+        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
+        <!--  <mybatis-plus.version>2.1.0</mybatis-plus.version> -->
+        <!--  rest  -->
         <shiro.version>1.4.0</shiro.version>
-        <mybatis-plus.version>2.1.0</mybatis-plus.version>
         <fastjson.version>1.2.31</fastjson.version>
         <commons.io.version>2.5</commons.io.version>
         <druid.version>1.0.28</druid.version>
         <swagger.version>2.2.2</swagger.version>
         <commons-lang3.version>3.6</commons-lang3.version>
-        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
         <jwt.version>0.7.0</jwt.version>
         <kaptcha.version>2.3.2</kaptcha.version>
-
+        <zxing.version>3.2.1</zxing.version>
+        <!--cache -->
         <ehcache.core.version>2.6.11</ehcache.core.version>
         <ehcache.version>3.3.1</ehcache.version>
-        <zxing.version>3.2.1</zxing.version>
-        <velocity.version>1.7</velocity.version>
-        <!--  MyBatis Generator  -->
-        <mybatis.generator.version>1.3.2</mybatis.generator.version>
-        <!--  Java接口和实体类  -->
-        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
-        <targetMapperPackage>com.chaozh.mapper</targetMapperPackage>
-        <targetModelPackage>com.chaozh.model</targetModelPackage>
-        <!--  XML生成路径  -->
-        <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
-        <targetXMLPackage>mapper</targetXMLPackage>
-        <!--  依赖版本  -->
-        <mysql.version>5.1.29</mysql.version>
-        <jackson.version>2.8.5</jackson.version>
-        <servlet.version>3.0.1</servlet.version>
     </properties>
 
-    <dependencies>
-        <dependency>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -108,21 +97,12 @@
             <artifactId>mapper</artifactId>
             <version>${mapper.version}</version>
         </dependency>
-
-        <!-- Mybatis Generator -->
-        <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-            <version>{mybatis.generator.version}</version>
-            <scope>compile</scope>
-            <optional>true</optional>
-        </dependency>
-         <!--redis依赖
+         <!--redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>-->
-        <!-- swagger ui依赖 -->
+        </dependency>
+        <!-- swagger ui -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -154,8 +134,18 @@
             <artifactId>commons-io</artifactId>
             <version>${commons.io.version}</version>
         </dependency>
-
-       <!--shiro依赖-->
+        <!-- security -->
+        <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
+            </dependency>
+        <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>${zxing.version}</version>
+            </dependency>
+       <!--shiro-->
        <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
@@ -180,8 +170,8 @@
             <artifactId>shiro-spring</artifactId>
             <version>${shiro.version}</version>
         </dependency>
-
-        <!-- 测试相关 -->
+    
+        <!-- test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -202,7 +192,8 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-    </dependencies>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <pluginManagement>
