@@ -1,4 +1,6 @@
-# springboot-starter
+# boot-framework
+
+framework for springboot project
 
 spring-boot配置脚手架
 

@@ -33,6 +33,7 @@
     </properties>
 
     <dependencies>
+        <!-- 
         <dependency>
             <groupId>com.chaozh</groupId>
             <artifactId>boot-core</artifactId>
@@ -41,7 +42,7 @@
         <dependency>
             <groupId>com.ibeetl</groupId>
             <artifactId>beetl</artifactId>
-        </dependency>
+        </dependency> -->
 
         <!-- Mybatis Generator -->
         <dependency>
